@@ -1,0 +1,99 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct node{
+    int value;
+    node *next;
+};
+
+node *root=NULL;
+int cnt=0;
+void append(int value){
+    if(root==NULL){
+        root=new node();
+        root->value=value;
+        root->next=NULL;
+    }
+    else {
+        node *current_node=root;
+        while(current_node->next!=NULL){
+            current_node=current_node->next;
+        }
+        node *newnode=new node();
+        newnode->value=value;
+        newnode->next=NULL;
+        current_node->next=newnode;
+    }
+}
+void add(int a,int value){
+    node *current_node=root;
+    while(current_node!=NULL){
+        cnt++;
+
+        if(cnt==a){
+            node *newnode=new node();
+            newnode->value=value;
+            newnode->next=current_node->next;
+           current_node->next=newnode;
+
+        }
+
+        current_node=current_node->next;
+
+
+    }
+}
+
+//void reversep(){
+//    node *c_node=root;
+//    node *p_node=NULL;
+//    node *n_node=NULL;
+//    while(c_node!=NULL){
+//        n_node=c_node->next;
+//        c_node->next=p_node;
+//
+//        p_node=c_node;
+//        c_node=n_node;
+//    }
+//    root=p_node;
+//
+//}
+//void reversep(){
+//    node *current_node=root;
+//    node *privious=NULL;
+//    node *next_node=NULL;
+//        while(current_node!=NULL){
+//            next_node=current_node->next;
+//            current_node->next=privious;
+//
+//            privious=current_node;
+//            current_node=next_node;
+//
+//        }
+//        root=privious;
+//}
+
+void print(){
+    node *current_node=root;
+    while(current_node!=NULL){
+        cout<<current_node->value<<" ";
+        current_node=current_node->next;
+    }
+    cout<<endl;
+}
+int main(){
+   int n;
+   cin>>n;
+   while(n--){
+    int a;
+    cin>>a;
+    append(a);
+   }
+   print();
+   //reversep();
+   int a,x;
+   cin>>a>>x;
+   add(a,x);
+   print();
+
+}
+

@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct node{
+    int value;
+    node *next;
+};
+
+node *root = NULL;
+node *head=NULL;
+void append(int value){
+    if(root==NULL){
+        root = new node();
+        root -> value = value;
+        head=root;
+        root -> next = NULL;
+    }
+    else{
+        node *current_node = root;
+        while(current_node -> next != NULL){
+            current_node = current_node -> next;
+        }
+
+        node *newnode = new node();
+        newnode -> value = value;
+        newnode -> next = NULL;
+        current_node -> next = newnode;
+    }
+}
+
+void print(){
+    node *current_node=root;
+    while(current_node!=NULL){
+        cout<<current_node->value<<" ";
+        current_node=current_node->next;
+    }
+}
+
+
+int Search(node *root,int s){
+    int cnt=1;
+    while(root){
+            if(s==root->value) return cnt;
+            root=root->next;
+            cnt++;
+    }
+    return -1;
+}
+
+int main(){
+    int n;
+    cin>>n;
+    while(n--){
+        int a;
+        cin>>a;
+        append(a);
+    }
+    print();
+
+    int srch;
+    cin>>srch;
+    int ans = Search(head,srch);
+    if(ans==-1){
+        cout<<"Not found"<<endl;
+    }
+    else
+    cout<<ans<<endl;
+
+
+    return 0;
+}

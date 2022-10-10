@@ -1,0 +1,91 @@
+/* BISMILLAHIR RAHMANIR RAHIM */
+#include<bits/stdc++.h>
+#define fast ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+#define s(v)       sort(v.begin(),v.end())
+#define r(v)       reverse(v.begin(),v.end())
+#define pf         printf
+#define sf         scanf
+#define GCD(x,y)   __gcd(x, y)
+#define pb         push_back
+#define vs         v.size()
+using namespace std;
+struct node{
+    int data;
+    node *left;
+    node *right;
+};
+
+node *head=NULL;
+
+void append(int data){
+    node *c_n=new node();
+    c_n->data=data;
+    c_n->left=NULL;
+    c_n->right=NULL;
+
+    if(head==NULL){
+        head=c_n;
+        return;
+    }
+    node *temp=head;
+    while(true){
+        if(c_n->data <= temp->data){
+            if(temp->left==NULL){
+                temp->left=c_n;
+                break;
+            }
+            else temp=temp->left;
+        }
+        else{
+            if(temp->right==NULL){
+                temp->right=c_n;
+                break;
+            }
+            else temp=temp->right;
+        }
+    }
+
+}
+
+void preOrder(node *head){
+    if(head==NULL) return;
+      cout<<head->data<<" ";
+    preOrder(head->left);
+    preOrder(head->right);
+}
+
+void PostOrder(node *head){
+     if(head==NULL) return;
+     PostOrder(head->left);
+     PostOrder(head->right);
+     cout<<head->data<<" ";
+}
+
+void InOrder(node *head){
+    if(head==NULL) return;
+    InOrder(head->left);
+    cout<<head->data<<" ";
+    InOrder(head->right);
+}
+
+int main(){
+    cout<<"Enter the number of node :";
+    int n;
+    cin>>n;
+    while(n--){
+        cout<<"Insert a node value of :";
+        int a;
+        cin>>a;
+        append(a);
+    }
+    cout<<"pre :"<<endl;
+    preOrder(head);
+    cout<<endl;
+    cout<<"in"<<endl;
+    InOrder(head);
+
+    cout<<endl;
+    PostOrder(head);
+
+    cout<<endl;
+}

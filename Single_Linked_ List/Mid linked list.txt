@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct node{
+    int value;
+    node *next;
+};
+
+node *root=NULL;
+
+void append(int value){
+    if(root==NULL){
+        root=new node();
+        root->value=value;
+        root->next=NULL;
+    }
+    else {
+        node *current_node=root;
+        while(current_node->next!=NULL){
+            current_node=current_node->next;
+        }
+        node *newnode=new node();
+        newnode->value=value;
+        newnode->next=NULL;
+        current_node->next=newnode;
+    }
+}
+void mid(){
+    node *c_node=root;
+    node *c1_node=root;
+    while(c1_node!=NULL){
+       if(c1_node->next==NULL) break;
+       c1_node=c1_node->next->next;
+     if(c1_node==NULL) break;
+     c_node=c_node->next;
+
+    }
+    cout<<c_node->value<<endl;
+
+
+}
+
+void print(){
+    node *current_node=root;
+    while(current_node!=NULL){
+        cout<<current_node->value<<" ";
+        current_node=current_node->next;
+    }
+    cout<<endl;
+}
+int main(){
+   int n;
+   cin>>n;
+   while(n--){
+    int a;
+    cin>>a;
+    append(a);
+   }
+   print();
+   mid();
+
+}

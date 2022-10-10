@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+int arr[100];
+int top=-1;
+int n;
+void push(int x)
+{
+    if(top==n-1)
+    {
+        cout<<"Stack is overflow"<<endl;
+        return;
+    }
+    top++;
+    arr[top]=x;
+
+}
+void pop()
+{
+    if(top==-1)
+    {
+        cout<<"Stack is empty"<<endl;
+        return;
+    }
+    top--;
+
+}
+int top_()
+{
+    if(top==-1)
+    {
+        cout<<"Stack is Empty"<<endl;
+        return -1;
+    }
+    return arr[top];
+
+
+}
+int main()
+{
+    cin>>n;
+    for(int i=0; i<n; i++)
+    {
+        int a;
+        cin>>a;
+        push(a);
+    }
+    push(1);
+    cout<<top_()<<endl;
+    pop();
+    cout<<top_()<<endl;
+    push(1);
+    cout<<top_()<<endl;
+}

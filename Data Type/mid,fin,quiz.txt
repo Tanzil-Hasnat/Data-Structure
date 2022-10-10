@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Tanzil{
+     int mid;
+     int fin;
+     int quize;
+};
+int main()
+{
+   int n;
+   cin>>n;
+   Tanzil arr[n];
+   for(int i=0;i<n;i++)
+    cin>>arr[i].mid>>arr[i].fin>>arr[i].quize;
+
+    int roll=1;
+    for(int i=1;i<=n;i++){
+        int total=arr[i].mid+arr[i].fin+arr[i].quize;
+        cout<<roll<<"->"<<total<<endl;
+        roll++;
+    }
+
+
+}

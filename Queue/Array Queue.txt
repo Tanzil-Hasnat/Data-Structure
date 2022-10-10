@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+int arr[100];
+int n;
+int front=-1;
+int back=-1;
+void push(int x){
+    if(back==n-1){
+        cout<<"Queue is over flow"<<endl;
+        return;
+    }
+    back++;
+    if(front==-1) front++;
+    arr[back]=x;
+}
+void pop_(){
+    if(front==-1 || front>back){
+        cout<<"Queue is empty"<<endl;
+        return;
+    }
+    front ++;
+}
+int front_(){
+       if(front==-1 || front>back){
+        cout<<"Queue is empty"<<endl;
+        return -1;;
+    }
+   return arr[front];
+
+}
+
+int main()
+{
+    cin>>n;
+    for(int i=0;i<n;i++){
+        int a;
+        cin>>a;
+        push(a);
+    }
+    push(7);
+    cout<<front_()<<endl;
+    pop_();
+    cout<<front_()<<endl;
+    cout<<front_()<<endl;
+    pop_();
+    cout<<front_()<<endl;
+
+
+
+}

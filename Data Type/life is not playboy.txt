@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct sakib{
+   string name;
+   int number;
+   string city;
+};
+
+
+int main(){
+      int n;
+      cin>>n;
+    sakib arr[n];
+
+    for(int i=0; i<n; i++){
+        cin>>arr[i].name>>arr[i].number>>arr[i].city;
+    }
+    int t;
+    cin>>t;
+    for(int i=0; i<t; i++){
+            int a;
+            cin>>a;
+            for(int i=0;i<n;i++){
+                    cout<<arr[a].name<<" "<<arr[a].number<<" "<<arr[a].city<<endl;
+                    break;
+
+            }
+    }
+
+    return 0;
+}

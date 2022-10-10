@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+struct node{
+    int data;
+    node *next;
+};
+
+node *root=NULL;
+void append(int n){
+    if(root==NULL){
+        root=new node;
+        root->data=n;
+        root->next=NULL;
+    }
+    else{
+        node *c_n=root;
+        while(c_n->next!=NULL){
+            c_n=c_n->next;
+        }
+        node *new_n=new node();
+        new_n->data=n;
+        new_n->next=NULL;
+        c_n->next=new_n;
+    }
+}
+
+void delete_node(){
+    node *c_n=root;
+    node *n_n=NULL;
+    while(c_n->next!=NULL){
+        if(c_n->data==c_n->next->data){
+            n_n=c_n->next->next;
+            delete(c_n->next);
+            c_n->next=n_n;
+        }
+        else c_n=c_n->next;
+    }
+}
+
+void print(){
+    node *c_n=root;
+    while(c_n!=NULL){
+        cout<<c_n->data<<endl;
+        c_n=c_n->next;
+    }
+}
+
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        int a;
+        cin>>a;
+        append(a);
+    }
+    print();
+    delete_node();
+    cout<<"okk"<<endl;
+    print();
+}

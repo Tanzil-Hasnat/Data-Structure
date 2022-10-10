@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct node{
+    int value;
+    node *next;
+    node *pre;
+};
+
+node *root = NULL, *tail = NULL;
+
+void first_append(int value){
+    if(root==NULL){
+        root = new node();
+        root -> value = value;
+        tail = root;
+        return;
+    }
+    else{
+        node *newnode = new node();
+        newnode -> value = value;
+        root -> pre = newnode;
+        newnode -> next = root;
+        root = newnode;
+    }
+}
+
+void last_append(int value){
+    if(root == NULL){
+        root = new node();
+        root -> value = value;
+        tail = root;
+        return;
+    }
+
+    node * newnode = new node();
+    newnode -> value = value;
+    newnode -> pre = tail;
+    tail -> next = newnode;
+    tail = newnode;
+}
+
+void print(){
+    node *current_node = root;
+    while(current_node != NULL){
+        cout << current_node -> value << endl;
+        current_node = current_node ->next;
+    }
+}
+
+
+int main(){
+    last_append(1);
+    last_append(2);
+    last_append(3);
+
+    first_append(9);
+    first_append(10);
+
+    print();
+
+    return 0;
+}
+

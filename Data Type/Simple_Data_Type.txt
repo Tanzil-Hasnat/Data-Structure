@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Tanzil{
+    string name;
+    int age;
+};
+int main()
+{
+   Tanzil first;
+   Tanzil second;
+   cin>>first.name>>first.age;
+   cout<<first.name<<" "<<first.age;
+   cin>>second.name>>second.age;
+   cout<<second.name<<" "<<second.age;
+
+}
